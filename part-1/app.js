@@ -20,8 +20,12 @@ app.get('/api/days/:day', (req, res) => {
 });
 
 app.post('/api/array/concat', (req, res) => {
-  const arrOne = req.body['array1'];
-  const arrTwo = req.body['array2']
-})
+  const arrayOne = req.body.array1;
+  const arrayTwo = req.body.array2;
+  const answer = arrayOne.concat(arrayTwo);
+  res.json({
+    results: answer,
+  });
+});
 
 app.listen(3000, () => { console.log('server listening on port 3000...'); })
