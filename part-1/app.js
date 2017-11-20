@@ -23,9 +23,16 @@ app.post('/api/array/concat', (req, res) => {
   const arrayOne = req.body.array1;
   const arrayTwo = req.body.array2;
   const answer = arrayOne.concat(arrayTwo);
-  res.json({
-    results: answer,
-  });
+  if (Array.isArray(arrayOne) && Array.isArray(arrayTwo)) {
+    console.log('arrays');
+    res.status(200).json({
+      results: answer,
+    });
+  } else {
+    res.status(400).json({
+      error: 'Input data should be of type Array.',
+    });
+  }
 });
 
 app.listen(3000, () => { console.log('server listening on port 3000...'); })
