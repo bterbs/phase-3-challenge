@@ -22,10 +22,17 @@ app.get('/api/days/:day', (req, res) => {
 app.post('/api/array/concat', (req, res) => {
   const arrayOne = req.body.array1;
   const arrayTwo = req.body.array2;
-  const answer = arrayOne.concat(arrayTwo);
-  res.status(200).json({
-    results: answer,
-  });
+
+  if (Array.isArray(arrayOne) && Array.isArray(arrayTwo)) {
+    const answer = arrayOne.concat(arrayTwo);
+    res.status(200).json({
+      results: answer,
+    });
+  } else {
+    res.status(400).json({
+      error: 'Input data should be of type Array.',
+    });
+  }
 });
 
   const port = process.env.PORT || 3000
