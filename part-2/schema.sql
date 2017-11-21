@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS shoppers;
+DROP TABLE IF EXISTS grocery_items;
+DROP TABLE IF EXISTS orders;
+
+CREATE TABLE grocery_items (
+  photoID INTEGER PRIMARY KEY,
+  upVote INTEGER DEFAULT 0,
+  downVote INTEGER DEFAULT 0
+);
+
+CREATE TABLE shoppers (
+  shopperID INTEGER PRIMARY KEY,
+  upVote INTEGER DEFAULT 0,
+  downVote INTEGER DEFAULT 0
+);
+
+CREATE TABLE orders (
+  orderID INTEGER PRIMARY KEY,
+  upVote INTEGER DEFAULT 0,
+  downVote INTEGER DEFAULT 0
+);
