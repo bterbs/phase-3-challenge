@@ -15,7 +15,7 @@ app.get('/api/days/:day', (req, res) => {
   if (Object.keys(daysOfWeek).includes(day)) {
     res.status(200).send(`${daysOfWeek[day]}`);
   } else {
-    res.status(500).send(`Hay, "${day}" is not a valid weekday`);
+    res.status(500).send(`Hay, "${day}" is not a valid weekday.`);
   }
 });
 
