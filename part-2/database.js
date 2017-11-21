@@ -1,7 +1,54 @@
 // default options = ();
 const pg = require('pg-promise')();
-//connects db to app;
-const connectionString = `postgres://${process.env.USER}:@localhost:5432/grocery_store`
+// connects db to app;
+const connectionString = `postgres://${process.env.USER}:@localhost:5432/grocery_store`;
 const db = pg(connectionString);
 
-//write all queries here
+// write all queries here
+const productList = (section) => {
+  return db.any(`
+    SELECT
+      name, section
+    FROM
+      grocery
+    WHERE
+      section = $1
+    `,
+    section);
+};
+
+const shopperOrders = (shopperID) => {
+  return db.any(`
+    SELECT
+      orders.orderID, orders.total_cost
+    FROM
+      orders
+    JOIN
+      shoppers
+    ON
+      shoppers.shopperID=orders.shopper_id
+    WHERE
+      shoppers.shopperID = $1
+    `,
+    shopperID);
+};
+
+const realShoppers = () => {
+  return db.any(`
+    SELECT
+      shoppers.name, COUNT(*) AS number_of_orders
+    FROM
+      orders
+    JOIN
+      shoppers
+    ON
+      shoppers.shopperID=orders.shopper_id
+    GROUP BY shoppers.name;
+    `);
+};
+
+module.exports = {
+  productList,
+  shopperOrders,
+  realShoppers,
+};
