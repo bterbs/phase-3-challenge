@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS grocery;
 DROP TABLE IF EXISTS orders;
 
 CREATE TABLE grocery (
+  id SERIAL UNIQUE,
   name TEXT NOT NULL,
   price DECIMAL DEFAULT 0,
   section TEXT NOT NULL
