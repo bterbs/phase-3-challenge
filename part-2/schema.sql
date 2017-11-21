@@ -3,19 +3,19 @@ DROP TABLE IF EXISTS grocery_items;
 DROP TABLE IF EXISTS orders;
 
 CREATE TABLE grocery_items (
-  photoID INTEGER PRIMARY KEY,
-  upVote INTEGER DEFAULT 0,
-  downVote INTEGER DEFAULT 0
+  productID INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  price DECIMAL DEFAULT 0,
+  section TEXT NOT NULL,
 );
 
 CREATE TABLE shoppers (
   shopperID INTEGER PRIMARY KEY,
-  upVote INTEGER DEFAULT 0,
-  downVote INTEGER DEFAULT 0
+  name TEXT NOT NULL,
 );
 
 CREATE TABLE orders (
   orderID INTEGER PRIMARY KEY,
-  upVote INTEGER DEFAULT 0,
-  downVote INTEGER DEFAULT 0
+  shopperID TEXT NOT NULL,
+  total_cost DECIMAL DEFAULT 0,
 );

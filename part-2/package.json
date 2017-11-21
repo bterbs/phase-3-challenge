@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db:create": "createdb grocery_store",
+    "db:create": "dropdb grocery_store; createdb grocery_store",
     "db:init": "npm run db:loadschema && npm run db:seed",
     "db:loadschema": "psql grocery_store < ./schema.sql",
     "db:seed": "psql grocery_store < ./load_data.sql"
