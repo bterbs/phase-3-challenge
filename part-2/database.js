@@ -53,7 +53,7 @@ const displayProductData = (data) => {
   console.log('|--------------+---------+');
   console.log('| Product Name | Section |');
   console.log('|--------------+---------+');
-  data.forEach((obj, index) => {
+  data.forEach((obj) => {
     console.log(`|  ${obj.name}      |    ${obj.section}  |`);
   });
   console.log('|--------------+---------+');
@@ -63,7 +63,7 @@ const displayOrderData = (data) => {
   console.log('|--------------+---------+');
   console.log('|----OrderID---+--Total Cost-|');
   console.log('|--------------+------------+');
-  data.forEach((obj, index) => {
+  data.forEach((obj) => {
     console.log(`|       ${obj.orderid}      |    ${obj.total_cost}    |`);
   });
   console.log('|--------------+---------+');
@@ -73,7 +73,7 @@ const displayShopperData = (data) => {
   console.log('|--------------+---------+');
   console.log('| Shopper Name | #  of Orders |');
   console.log('|--------------+---------+');
-  data.forEach((obj, index) => {
+  data.forEach((obj) => {
     console.log(`|  ${obj.name}      |    ${obj.number_of_orders}         |`);
   });
   console.log('|--------------+---------+');
