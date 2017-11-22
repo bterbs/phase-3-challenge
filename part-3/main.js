@@ -41,7 +41,7 @@ const totalCost = () => {
   let total = 0;
   pricesToList.forEach((price) => {
     priceFloats.push(parseFloat(price.substr(1)));
-    total = priceFloats.reduce((a, b) => a + b);
+    total = priceFloats.reduce((a, b) => a + b).toFixed(2);
   });
   const row = table.insertRow(-1);
   const cell = row.insertCell(0);
