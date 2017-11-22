@@ -61,8 +61,8 @@ const displayProductData = (data) => {
 
 const displayOrderData = (data) => {
   console.log('|--------------+---------+');
-  console.log('|----OrderID---+----Cost----+');
-  console.log('|--------------+---------+');
+  console.log('|----OrderID---+--Total Cost-|');
+  console.log('|--------------+------------+');
   data.forEach((obj, index) => {
     console.log(`|       ${obj.orderid}      |    ${obj.total_cost}    |`);
   });
