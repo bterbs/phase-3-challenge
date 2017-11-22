@@ -7,6 +7,7 @@ let cart = {
   shoppingCartItems: {}, // array of objects, each a store item-price pair
   numberOfItems: 0,
 };
+const displayCount = document.getElementById('cart-item-count');
 
 // update the number displayed next to cart to show total number of items in cart.
 const addItemToCart = function () {
@@ -15,6 +16,7 @@ const addItemToCart = function () {
   cart.shoppingCartItems[item] = price;
   cart.numberOfItems += 1;
   console.log(cart.numberOfItems);
+  displayCount.innerHTML = `(${cart.numberOfItems})`;
 };
 
 // function to clear shoppingCart.
@@ -23,11 +25,14 @@ const clearContents = () => {
     shoppingCartItems: {},
     numberOfItems: 0,
   };
+  displayCount.innerHTML = `(${cart.numberOfItems})`;
 };
 
 // When the user clicks on the button, open the modal
 const openModalOfCart = () => {
-  modal.style.display = "block";
+  modal.style.display = 'block';
+  const content = document.getElementsByClassName('modal-content').children;
+  console.log(content);
 };
 
 // When the user clicks on <span> (x), close the modal
