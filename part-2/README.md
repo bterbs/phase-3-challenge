@@ -5,6 +5,6 @@ Getting Started
   - npm run db:create
   - npm run db:init
 3. To run commands
-  - ./store product-list <product-section>
-  - ./store shopper-orders <shopper-id>
-  - ./store real-shoppers
+  - ./store.js product-list <product-section>
+  - ./store.js shopper-orders <shopper-id>
+  - ./store.js real-shoppers
