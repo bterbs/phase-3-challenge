@@ -17,7 +17,7 @@ const addItemToCart = function () {
   cart.shoppingCartItems[item] = price;
   cart.numberOfItems += 1;
   displayCount.innerHTML = `(${cart.numberOfItems})`;
-  };
+};
 
 // function to create table to list items and prices in.
 const addCartToModal = () => {
@@ -46,7 +46,7 @@ const totalCost = () => {
   const row = table.insertRow(-1);
   const cell = row.insertCell(0);
   cell.innerHTML = '<h3>Total<h3>';
-  const row2 = table.rows[table.rows.length-1];
+  const row2 = table.rows[table.rows.length - 1];
   const cell2 = row2.insertCell(-1);
   cell2.innerHTML = `$${total}`;
 };
