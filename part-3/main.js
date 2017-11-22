@@ -3,19 +3,24 @@ const modal = document.getElementById('theModal');
 // access Span element that closes the modal
 const span = document.getElementsByClassName('close')[0];
 
-let shoppingCart = {
-  shoppingCartItems: [], // array of objects, each a store item-price pair
+let cart = {
+  shoppingCartItems: {}, // array of objects, each a store item-price pair
   numberOfItems: 0,
 };
 
-const addItemToCart = () => {
-  // update the number displayed next to cart to show total number of items in cart.
+// update the number displayed next to cart to show total number of items in cart.
+const addItemToCart = function () {
+  const item = this.parentElement.children[0].innerHTML;
+  const price = this.parentElement.children[1].innerHTML;
+  cart.shoppingCartItems[item] = price;
+  cart.numberOfItems += 1;
+  console.log(cart.numberOfItems);
 };
 
 // function to clear shoppingCart.
 const clearContents = () => {
-  shoppingCart = {
-    shoppingCartItems: [],
+  cart = {
+    shoppingCartItems: {},
     numberOfItems: 0,
   };
 };
