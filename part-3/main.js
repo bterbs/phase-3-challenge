@@ -3,13 +3,12 @@ const modal = document.getElementById('theModal');
 // access Span element that closes the modal
 const span = document.getElementsByClassName('close')[0];
 
+const displayCount = document.getElementById('cart-item-count');
+const table = document.getElementById('cart-items');
 let cart = {
   shoppingCartItems: {}, // array of objects, each a store-item:price pair
   numberOfItems: 0,
 };
-const displayCount = document.getElementById('cart-item-count');
-
-const table = document.getElementById('cart-items');
 
 // update the number displayed next to cart to show total number of items in cart.
 const addItemToCart = function () {
@@ -20,7 +19,7 @@ const addItemToCart = function () {
   displayCount.innerHTML = `(${cart.numberOfItems})`;
   };
 
-// create table to list items and prices in.
+// function to create table to list items and prices in.
 const addCartToModal = () => {
   const itemsToList = Object.keys(cart.shoppingCartItems);
   const pricesToList = Object.values(cart.shoppingCartItems);
@@ -29,8 +28,30 @@ const addCartToModal = () => {
     const cell1 = row.insertCell(0);
     cell1.innerHTML = el;
   });
+  pricesToList.forEach((el, index) => {
+    const row = table.rows[index];
+    const cell2 = row.insertCell(1);
+    cell2.innerHTML = el;
+  });
 };
-// function to clear shoppingCart.
+
+const totalCost = () => {
+  const pricesToList = Object.values(cart.shoppingCartItems);
+  const priceFloats = [];
+  let total = 0;
+  pricesToList.forEach((price) => {
+    priceFloats.push(parseFloat(price.substr(1)));
+    total = priceFloats.reduce((a, b) => a + b);
+  });
+  const row = table.insertRow(-1);
+  const cell = row.insertCell(0);
+  cell.innerHTML = '<h3>Total<h3>';
+  const row2 = table.rows[table.rows.length-1];
+  const cell2 = row2.insertCell(-1);
+  cell2.innerHTML = `$${total}`;
+};
+
+// function to clear shoppingCart contents.
 const clearContents = () => {
   cart = {
     shoppingCartItems: {},
@@ -43,6 +64,7 @@ const clearContents = () => {
 // When the user clicks on the button, load the cart, open the modal
 const openModalOfCart = () => {
   addCartToModal();
+  totalCost();
   modal.style.display = 'block';
 };
 
