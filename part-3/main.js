@@ -32,7 +32,7 @@ const clearContents = () => {
 const openModalOfCart = () => {
   modal.style.display = 'block';
   const content = document.getElementsByClassName('modal-content').children;
-  console.log(content);
+  console.log('cart open');
 };
 
 // When the user clicks on <span> (x), close the modal
@@ -41,12 +41,16 @@ const closeModal = () => {
 };
 
 
-const addToCartBtn = document.getElementById('add-button');
+const btnArray = document.querySelectorAll('button.add');
+console.log(btnArray);
 const cartBtn = document.getElementById('cart-button');
 const clearBtn = document.getElementById('clear-button');
 
 /* event listeners for "Add to cart" */
-addToCartBtn.addEventListener('click', addItemToCart);
+btnArray.forEach((btn) => {
+  btn.addEventListener('click', addItemToCart);
+});
+// addToCartBtn.addEventListener('click', addItemToCart);
 
 /* event listeners for  other buttons */
 cartBtn.addEventListener('click', openModalOfCart);
