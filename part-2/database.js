@@ -49,8 +49,41 @@ const realShoppers = () => {
     `);
 };
 
+const displayProductData = (data) => {
+  console.log('|--------------+---------+');
+  console.log('| Product Name | Section |');
+  console.log('|--------------+---------+');
+  data.forEach((obj, index) => {
+    console.log(`|  ${obj.name}      |    ${obj.section}  |`);
+  });
+  console.log('|--------------+---------+');
+};
+
+const displayOrderData = (data) => {
+  console.log('|--------------+---------+');
+  console.log('|----OrderID---+----Cost----+');
+  console.log('|--------------+---------+');
+  data.forEach((obj, index) => {
+    console.log(`|       ${obj.orderid}      |    ${obj.total_cost}    |`);
+  });
+  console.log('|--------------+---------+');
+};
+
+const displayShopperData = (data) => {
+  console.log('|--------------+---------+');
+  console.log('| Shopper Name | #  of Orders |');
+  console.log('|--------------+---------+');
+  data.forEach((obj, index) => {
+    console.log(`|  ${obj.name}      |    ${obj.number_of_orders}         |`);
+  });
+  console.log('|--------------+---------+');
+};
+
 module.exports = {
   productList,
   shopperOrders,
   realShoppers,
+  displayOrderData,
+  displayShopperData,
+  displayProductData,
 };
