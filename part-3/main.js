@@ -4,10 +4,12 @@ const modal = document.getElementById('theModal');
 const span = document.getElementsByClassName('close')[0];
 
 let cart = {
-  shoppingCartItems: {}, // array of objects, each a store item-price pair
+  shoppingCartItems: {}, // array of objects, each a store-item:price pair
   numberOfItems: 0,
 };
 const displayCount = document.getElementById('cart-item-count');
+
+const table = document.getElementById('cart-items');
 
 // update the number displayed next to cart to show total number of items in cart.
 const addItemToCart = function () {
@@ -15,10 +17,19 @@ const addItemToCart = function () {
   const price = this.parentElement.children[1].innerHTML;
   cart.shoppingCartItems[item] = price;
   cart.numberOfItems += 1;
-  console.log(cart.numberOfItems);
   displayCount.innerHTML = `(${cart.numberOfItems})`;
-};
+  };
 
+// create table to list items and prices in.
+const addCartToModal = () => {
+  const itemsToList = Object.keys(cart.shoppingCartItems);
+  const pricesToList = Object.values(cart.shoppingCartItems);
+  itemsToList.forEach((el, index) => {
+    const row = table.insertRow(index);
+    const cell1 = row.insertCell(0);
+    cell1.innerHTML = el;
+  });
+};
 // function to clear shoppingCart.
 const clearContents = () => {
   cart = {
@@ -26,13 +37,13 @@ const clearContents = () => {
     numberOfItems: 0,
   };
   displayCount.innerHTML = `(${cart.numberOfItems})`;
+  table.innerHTML = '';
 };
 
-// When the user clicks on the button, open the modal
+// When the user clicks on the button, load the cart, open the modal
 const openModalOfCart = () => {
+  addCartToModal();
   modal.style.display = 'block';
-  const content = document.getElementsByClassName('modal-content').children;
-  console.log('cart open');
 };
 
 // When the user clicks on <span> (x), close the modal
@@ -42,15 +53,13 @@ const closeModal = () => {
 
 
 const btnArray = document.querySelectorAll('button.add');
-console.log(btnArray);
 const cartBtn = document.getElementById('cart-button');
 const clearBtn = document.getElementById('clear-button');
 
-/* event listeners for "Add to cart" */
+/* event listeners for all "Add to cart" buttons */
 btnArray.forEach((btn) => {
   btn.addEventListener('click', addItemToCart);
 });
-// addToCartBtn.addEventListener('click', addItemToCart);
 
 /* event listeners for  other buttons */
 cartBtn.addEventListener('click', openModalOfCart);
