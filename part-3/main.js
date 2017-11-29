@@ -23,6 +23,7 @@ const addItemToCart = function () {
 const addCartToModal = () => {
   const itemsToList = Object.keys(cart.shoppingCartItems);
   const pricesToList = Object.values(cart.shoppingCartItems);
+
   itemsToList.forEach((el, index) => {
     const row = table.insertRow(index);
     const cell1 = row.insertCell(0);
@@ -70,6 +71,7 @@ const openModalOfCart = () => {
 
 // When the user clicks on <span> (x), close the modal
 const closeModal = () => {
+  table.innerHTML = '';
   modal.style.display = 'none';
 };
 
