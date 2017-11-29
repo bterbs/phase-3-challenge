@@ -6,7 +6,7 @@ returns Promise that resolves to the list of all results from truncated tables *
 const initDb = () => {
   const tables = ['grocery', 'shoppers', 'orders'];
   return Promise.all(tables.map(table =>
-    db.any(`TRUNCATE TABLE ${table} RESTART IDENTITY CASCADE`)))
+    db.query(`TRUNCATE TABLE ${table} RESTART IDENTITY CASCADE`)))
     .catch(console.error);
 };
 
