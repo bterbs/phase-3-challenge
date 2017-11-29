@@ -23,9 +23,10 @@ describe('query tests', () => {
 
   describe('shopperOrders', () => {
     context('when given a valid shopper_id', () => {
-      it('should return all the products in a given section from the db', () => {
-        return shopperOrders('1').then((results) => {
+      it('should return all the products in a given section from the db', (done) => {
+        shopperOrders('1').then((results) => {
           expect(results.length).to.equal(2);
+          done();
         });
       });
     });
