@@ -80,6 +80,7 @@ const displayShopperData = (data) => {
 };
 
 module.exports = {
+  db,
   productList,
   shopperOrders,
   realShoppers,

@@ -3,8 +3,14 @@
 
 const expect = require('chai').expect;
 const { productList, shopperOrders, realShoppers } = require('../database.js');
+const { resetDb } = require('./dbUtilities.js');
 
-describe( 'query tests', () => {
+describe('query tests', () => {
+  // beforeEach('reset the test db', (done) => {
+  //   resetDb();
+  //   done();
+  // });
+
   describe('productList', () => {
     context('when given a valid section argument', () => {
       it('should return all the products in a given section from the db', () => {
