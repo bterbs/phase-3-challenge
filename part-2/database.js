@@ -1,7 +1,9 @@
 // default options = ();
 const pg = require('pg-promise')();
 // connects db to app;
-const connectionString = `postgres://${process.env.USER}:@localhost:5432/grocery_store`;
+const connectionString = /* process.env.NODE_ENV === 'test'
+  ? `postgres://${process.env.NODE_ENV}:@localhost:5432/grocery_store_test`
+  : */`postgres://${process.env.USER}:@localhost:5432/grocery_store`;
 
 // this creates our database object
 const db = pg(connectionString);
