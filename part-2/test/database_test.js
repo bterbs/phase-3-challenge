@@ -19,11 +19,6 @@ describe('query tests', () => {
         });
       });
     });
-    context('when given an invalid section argument', () => {
-      it('should return \'whoops\' error message', () => {
-
-      });
-    });
   });
 
   describe('shopperOrders', () => {
